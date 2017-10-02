@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<sites>
+    <site>
+        <title>笔下文学</title>
+        <charset>UTF-8</charset>
+        <url>http://www.bixia.org/</url>
+        <chapter-list-selector>#list > dl > dd > a</chapter-list-selector>
+        <chapter-detail-title-selector>body > div.content_read > div.box_con > div.bookname > h1</chapter-detail-title-selector>
+        <chapter-detail-content-selector>#content</chapter-detail-content-selector>
+        <chapter-detail-prev-selector>#A1</chapter-detail-prev-selector>
+        <chapter-detail-next-selector>#A3</chapter-detail-next-selector>
+    </site>
+    
+    <site>
+        <title>看书中</title>
+        <charset>UTF-8</charset>
+        <url>http://www.kanshuzhong.com/</url>
+        <chapter-list-selector>#bgdiv > div.bookcontent > dl > dd > a</chapter-list-selector>
+        <chapter-detail-title-selector>#nr1 > h2</chapter-detail-title-selector>
+        <chapter-detail-content-selector>#nr1 > div.textcontent</chapter-detail-content-selector>
+        <chapter-detail-prev-selector>#nr_body > div.readlink > a:nth-child(2)</chapter-detail-prev-selector>
+        <chapter-detail-next-selector>#nr_body > div.readlink > a:nth-child(4)</chapter-detail-next-selector>
+    </site>
+    
+    <site>
+        <title>笔趣阁</title>
+        <charset>UTF-8</charset>
+        <url>http://www.qu.la/</url>
+        <chapter-list-selector>#list > dl > dd > a</chapter-list-selector>
+        <chapter-detail-title-selector>#wrapper > div.content_read > div.box_con > div.bookname > h1</chapter-detail-title-selector>
+        <chapter-detail-content-selector>#content</chapter-detail-content-selector>
+        <chapter-detail-prev-selector>#A1</chapter-detail-prev-selector>
+        <chapter-detail-next-selector>#A3</chapter-detail-next-selector>
+    </site>
+    
+</sites>
