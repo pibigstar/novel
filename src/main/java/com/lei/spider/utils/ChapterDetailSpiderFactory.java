@@ -1,7 +1,7 @@
 package com.lei.spider.utils;
 
 import com.lei.spider.NovelSiteEnum;
-import com.lei.spider.impl.DefaultChapterDetailSpider;
+import com.lei.spider.impl.chapter.DefaultChapterDetailSpider;
 import com.lei.spider.interfaces.IChapterDetailSpider;
 
 public class ChapterDetailSpiderFactory {

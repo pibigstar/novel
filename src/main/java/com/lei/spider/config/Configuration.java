@@ -1,10 +1,7 @@
 package com.lei.spider.config;
 
 public class Configuration {
-	/**
-	 * 默认每个线程下载100章
-	 */
-	private static final int DEFAULT_SIZE = 100;
+	
 	/**
 	 * 下载后保存的路径
 	 */
@@ -14,22 +11,21 @@ public class Configuration {
 	 * 每个线程最多下载多少章节
 	 * @return
 	 */
-	private int size;
+	private int size = 100;
 	
 	/**
 	 * 超时时间
 	 */
-	private int timeout;
+	private int timeout = 10000;
 	/**
 	 * 尝试次数
 	 */
-	private int tryTime;
-
-	public Configuration() {
-		this.size = DEFAULT_SIZE;
-	}
+	private int tryTime = 3;
 
 	
+	public Configuration() {
+	}
+
 	public String getPath() {
 		return path;
 	}

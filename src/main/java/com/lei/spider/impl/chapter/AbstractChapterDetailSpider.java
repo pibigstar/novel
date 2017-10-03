@@ -1,4 +1,4 @@
-package com.lei.spider.impl;
+package com.lei.spider.impl.chapter;
 
 import java.io.IOException;
 import java.util.Map;
@@ -20,7 +20,7 @@ public abstract class AbstractChapterDetailSpider implements IChapterDetailSpide
 		try {
 			Configuration config = new Configuration();
 			config.setTryTime(3);
-			config.setTimeout(10);
+			config.setTimeout(10000);
 			NovelSpiderUtil spider = new NovelSpiderUtil(config);
 			
 			Document document = spider.getDocument(url);
