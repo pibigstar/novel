@@ -7,8 +7,11 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Date;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -26,7 +29,7 @@ public class NovelSpiderUtil {
 	}
 
 	/**
-	 * 给我一个URL，我给你一个Document对象
+	 * 给我一个URL，我给你此网页源码
 	 * @param url
 	 * @return
 	 * @throws Exception 
@@ -40,7 +43,7 @@ public class NovelSpiderUtil {
 				document = Jsoup.connect(url).timeout(config.getTimeout()).get();
 				return document;
 			} catch (RuntimeException e) {
-				System.err.println("第" + i +"次尝试下载失败");
+				System.err.println("第" + (i+1) +"次尝试下载失败");
 			}
 		}
 		return null;
@@ -97,4 +100,29 @@ public class NovelSpiderUtil {
 			throw new RuntimeException("文件合并失败！");
 		}
 	}
+
+	/**
+	 * 返回小说的状态
+	 * @param text
+	 * @return
+	 */
+	public static int getStatus(String status) {
+		if (status.contains("连载")) {
+			return 1;
+		}else if (status.contains("完结")||status.contains("完成")) {
+			return 2;
+		}else {
+			return 1;
+		}
+	}
+	
+	public static Date getDate(String date,String pattern) {
+		SimpleDateFormat format = new SimpleDateFormat(pattern);
+		try {
+			return format.parse(date);
+		} catch (ParseException e) {
+			return new Date();
+		}
+	}
+	
 }

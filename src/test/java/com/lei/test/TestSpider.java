@@ -1,5 +1,6 @@
 package com.lei.test;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.junit.Test;
@@ -8,12 +9,15 @@ import com.lei.spider.NovelSiteEnum;
 import com.lei.spider.config.Configuration;
 import com.lei.spider.entity.Chapter;
 import com.lei.spider.entity.ChapterDetail;
+import com.lei.spider.entity.Novel;
 import com.lei.spider.impl.NovelDownload;
 import com.lei.spider.impl.chapter.DefaultChapterDetailSpider;
 import com.lei.spider.impl.chapter.DefaultChapterSpider;
+import com.lei.spider.impl.novel.KanShuZhongNovelSpider;
 import com.lei.spider.interfaces.IChapterDetailSpider;
 import com.lei.spider.interfaces.IChapterSpider;
 import com.lei.spider.interfaces.INovelDownload;
+import com.lei.spider.interfaces.INovelSpider;
 import com.lei.spider.utils.NovelSpiderUtil;
 import com.lei.spider.utils.ReadXMLUtil;
 
@@ -54,16 +58,29 @@ public class TestSpider {
 	public void testGetFiles() {
 		Configuration config = new Configuration();
 		config.setPath("D:/novel");
-		NovelSpiderUtil spiderUtil = new NovelSpiderUtil(config);
-		spiderUtil.mutliFileMerge(config.getPath(), "1.txt",false);
+		NovelSpiderUtil.mutliFileMerge(config.getPath(), "1.txt",false);
 	}
 	
 	@Test
 	public void testMergeToFile() {
 		Configuration config = new Configuration();
 		config.setPath("D:/novel2");
-		NovelSpiderUtil spiderUtil = new NovelSpiderUtil(config);
-		spiderUtil.mutliFileMerge(config.getPath(), null, true);
+		NovelSpiderUtil.mutliFileMerge(config.getPath(), null, true);
+	}
+	
+	
+	@Test
+	public void testGetNovels() {
+		INovelSpider spider = new KanShuZhongNovelSpider();
+		Iterator<List<Novel>> iterator = spider.iterator("http://www.kanshuzhong.com/map/A/1/");
+		int i = 1;
+		while (iterator.hasNext()) {
+			System.err.println(i++);
+			List<Novel> novels = iterator.next();
+			for (Novel novel : novels) {
+				System.out.println(novel);
+			}
+		}
 	}
 
 }

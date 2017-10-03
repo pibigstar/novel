@@ -11,7 +11,7 @@
         <chapter-detail-prev-selector>#A1</chapter-detail-prev-selector>
         <chapter-detail-next-selector>#A3</chapter-detail-next-selector>
     </site>
-    
+  
     <site>
         <title>看书中</title>
         <charset>UTF-8</charset>
@@ -21,6 +21,8 @@
         <chapter-detail-content-selector>#nr1 > div.textcontent</chapter-detail-content-selector>
         <chapter-detail-prev-selector>#nr_body > div.readlink > a:nth-child(2)</chapter-detail-prev-selector>
         <chapter-detail-next-selector>#nr_body > div.readlink > a:nth-child(4)</chapter-detail-next-selector>
+        <novel-selector>body > div.contnet > div.content_right > table > tbody > tr</novel-selector>
+        <novel-next-page-selector>#pagelink > a.next</novel-next-page-selector>
     </site>
     
     <site>
