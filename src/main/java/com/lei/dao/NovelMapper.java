@@ -2,6 +2,7 @@ package com.lei.dao;
 
 import java.util.List;
 
+import com.lei.spider.entity.Chapter;
 import com.lei.spider.entity.Novel;
 
 public interface NovelMapper {
@@ -18,4 +19,7 @@ public interface NovelMapper {
     int updateByPrimaryKey(Novel record);
     
     int batchInsert(List<Novel> novels);
+    
+    List<Novel> getNovelsByKeyWord(String keyWord);
+    
 }

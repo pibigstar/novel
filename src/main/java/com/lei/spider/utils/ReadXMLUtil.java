@@ -1,6 +1,7 @@
 package com.lei.spider.utils;
 
 import java.io.File;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +25,8 @@ public class ReadXMLUtil {
 	private static void init() {
 		SAXReader reader = new SAXReader();
 		try {
-			Document document =	reader.read(new File("conf/Spider-Rule.xml"));
+			 InputStream  in = Thread.currentThread().getContextClassLoader().getResourceAsStream("Spider-Rule.xml");
+			Document document =	reader.read(in);
 			Element root = document.getRootElement();
 			
 			List<Element> sites = root.elements("site");

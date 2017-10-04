@@ -40,7 +40,8 @@ public class NovelSpiderUtil {
 		int tryTime = config.getTryTime();
 		for (int i = 0; i <tryTime; i++) {
 			try {
-				document = Jsoup.connect(url).timeout(config.getTimeout()).get();
+				String result = Jsoup.connect(url).timeout(config.getTimeout()).get().toString();
+				document = Jsoup.parse(result);
 				return document;
 			} catch (RuntimeException e) {
 				System.err.println("第" + (i+1) +"次尝试下载失败");

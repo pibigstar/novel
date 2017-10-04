@@ -51,8 +51,6 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
 		<!-- <property name="filters" value="stat" /> -->
 		<property name="filters" value="mergeStat" />
 		
-		<!-- 输出sql语句 -->
-		<property name="filters" value="mergeStat" />
 	</bean>
 
 	<!-- myBatis文件 -->
