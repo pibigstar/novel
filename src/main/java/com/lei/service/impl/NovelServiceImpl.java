@@ -17,14 +17,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.lei.dao.NovelMapper;
-import com.lei.service.INovelSaveToDB;
+import com.lei.service.INovelService;
+import com.lei.spider.entity.Chapter;
+import com.lei.spider.entity.ChapterDetail;
 import com.lei.spider.entity.Novel;
 import com.lei.spider.impl.novel.KanShuZhongNovelSpider;
+import com.lei.spider.interfaces.IChapterDetailSpider;
+import com.lei.spider.interfaces.IChapterSpider;
 import com.lei.spider.interfaces.INovelSpider;
+import com.lei.spider.utils.ChapterDetailSpiderFactory;
+import com.lei.spider.utils.ChapterSpiderFactory;
 
 @Service("novelService")
-public class NovelSaveToDB implements INovelSaveToDB{
+public class NovelServiceImpl implements INovelService {
 
+	
 	protected static Map<String, String> TASKS = new HashMap<>();
 	private NovelMapper novelMapper;
 	@Autowired
@@ -74,4 +81,29 @@ public class NovelSaveToDB implements INovelSaveToDB{
 			}
 		}
 	}
+	
+	/**
+	 * 模糊查询
+	 */
+	@Override
+	public List<Novel> getNovelsByKeyWord(String keyWord) {
+		keyWord = "%" +keyWord +"%";
+		return novelMapper.getNovelsByKeyWord(keyWord);
+	}
+
+	@Override
+	public List<Chapter> getChapterList(String url) {
+		IChapterSpider spider = ChapterSpiderFactory.getChapterSpider(url);
+		List<Chapter> chapters = spider.getChapter(url);
+		return chapters;
+	}
+
+	@Override
+	public ChapterDetail getChapterDetail(String url) {
+		IChapterDetailSpider detailSpider = ChapterDetailSpiderFactory.getChapterDetailSpider(url);
+		ChapterDetail detail = detailSpider.getChapterDetail(url);
+		detail.setContent(detail.getContent().replaceAll("     ", "     <br><br>"));
+		return detail;
+	}
+
 }

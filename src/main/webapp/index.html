@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+ <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+
+    <title>小说搜搜-免费且无广告的小说阅读网</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+  </head>
+<body>
+	<div class="jumbotron">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="input-group">
+						<input type="text" id="keyword" class="form-control"  placeholder="可以输入书名，作者名，甚至可以是符合条件的URL...">
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="button" id="btnSearch">小说搜搜</button>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container no-table-responsive">
+		<table
+			class="table table-striped table-bordered table-condensed table-hover">
+			<thead>
+				<tr style="text-align:center;font-style:800;">
+					<th>#</th>
+					<td>书名</td>
+					<td>作者</td>
+					<td>最新章节</td>
+					<td>状态</td>
+				</tr>
+			</thead>
+			<tbody id="list"></tbody>
+		</table>
+	</div>
+	
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+	<script src="js/jquery.base64.js"></script>
+	
+	
+	<script type="text/javascript">
+	$(function(){
+		function search(){
+            var keyWord = $("#keyword").val().trim();
+            if(keyWord.length==0){
+                alert("请输入小说或作者名字");
+                return ;
+            }
+            $.ajax({
+                url :"search.do",
+                type:"post",
+                data:{"keyWord":keyWord},
+                dataType:'json',
+                success:function(data){
+                    $("#list").html("");
+                    $(data.object).each(function(index,novel){
+                        
+                        $("#list").append("<tr><td>"+(index+1)+"</td><td><a href='chapterList.do?url="+novel.url+"'>"
+                                +novel.name+"</a></td><td>"
+                                +novel.author+"</td><td>"
+                                +novel.lastUpdateChapter
+                                +"</td><td>"
+                                +novel.status
+                                +"</td></tr>")
+                        
+                         console.info(index+","+novel.name);
+                    });
+                },
+                error:function(data){
+                    alert(data);
+                }
+            })
+		}
+		
+		//点击搜索
+		 $("#btnSearch").click(function(){
+			   search();
+	       });
+		   
+         //添加回车为搜索
+		 $("#keyword").keypress(function(event){
+             if(event.keyCode==13){
+            	search();
+             }
+         });
+	})
+	</script>
+	
+	
+</body>
+</html>
