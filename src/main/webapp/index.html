@@ -73,10 +73,8 @@
                                 +novel.author+"</td><td><a href='chapterDetail.do?url="+novel.lastUpdateChapterUrl+"''>"
                                 +novel.lastUpdateChapter
                                 +"</a></td><td>"
-                                +novel.status
+                                +(novel.status==1?'连载':'完结')
                                 +"</td></tr>")
-                        
-                         console.info(index+","+novel.name);
                     });
                 },
                 error:function(data){
