@@ -22,6 +22,7 @@ import com.lei.spider.entity.Chapter;
 import com.lei.spider.entity.ChapterDetail;
 import com.lei.spider.entity.Novel;
 import com.lei.spider.impl.novel.KanShuZhongNovelSpider;
+import com.lei.spider.impl.novel.QuLaGetNovels;
 import com.lei.spider.interfaces.IChapterDetailSpider;
 import com.lei.spider.interfaces.IChapterSpider;
 import com.lei.spider.interfaces.INovelSpider;
@@ -104,6 +105,21 @@ public class NovelServiceImpl implements INovelService {
 		ChapterDetail detail = detailSpider.getChapterDetail(url);
 		detail.setContent(detail.getContent().replaceAll("     ", "     <br><br>"));
 		return detail;
+	}
+
+	/**
+	 * 解析qu.la 上的搜索页
+	 */
+	@Override
+	public List<Novel> getNovels(String keyWord,String plat) {
+		String baseUrl = "";
+		if ("1".equals(plat)) {
+			baseUrl = "http://zhannei.baidu.com/cse/search?s=3677118700255927857&q=";
+		}else if ("2".equals(plat)) {
+			baseUrl = "http://zhannei.baidu.com/cse/search?s=920895234054625192&q=";
+		}
+		String url = baseUrl+keyWord;
+		return QuLaGetNovels.getNovels(url);
 	}
 
 }

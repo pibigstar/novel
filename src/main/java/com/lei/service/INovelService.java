@@ -16,5 +16,6 @@ public interface INovelService {
 	public List<Chapter> getChapterList(String url);
 	/** 获得章节的详细内容*/
 	public ChapterDetail getChapterDetail(String url);
+	public List<Novel> getNovels(String keyWord,String plat);
 
 }

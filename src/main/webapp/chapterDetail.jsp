@@ -42,10 +42,10 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div style="text-align:center;font-size:20px">
-					    <a href="./">回到搜索页</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="chapterDetail.do?url=${chapterDetail.prev }&baseUrl=${baseUrl}">上一章</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="chapterList.do?url=${baseUrl }">《《 回到目录页 》》</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="chapterDetail.do?url=${chapterDetail.next }&baseUrl=${baseUrl}">下一章</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					    <a href="./">回到搜索页</a>&nbsp;
+                        <a href="chapterDetail.do?url=${chapterDetail.prev }&baseUrl=${baseUrl}">上一章</a>
+                        <a href="chapterList.do?url=${baseUrl }">《目录页》</a>&nbsp;
+                        <a href="chapterDetail.do?url=${chapterDetail.next }&baseUrl=${baseUrl}">下一章</a>
                     </div>
 				</div>
 			</div>
@@ -59,9 +59,9 @@
 		</div>
 		<!-- 前一章 章节列表 后一章 链接区域 -->
 		<div style="text-align:center;font-size:20px">
-		  <a href="chapterDetail.do?url=${chapterDetail.prev }&baseUrl=${baseUrl}">上一章</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		  <a href="chapterList.do?url=${baseUrl }">《《 回到目录页 》》</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		  <a href="chapterDetail.do?url=${chapterDetail.next }&baseUrl=${baseUrl}">下一章</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		  <a href="chapterDetail.do?url=${chapterDetail.prev }&baseUrl=${baseUrl}">上一章</a>&nbsp;
+		  <a href="chapterList.do?url=${baseUrl }">《回到目录页》</a>&nbsp;
+		  <a href="chapterDetail.do?url=${chapterDetail.next }&baseUrl=${baseUrl}">下一章</a>
 		</div>
 	</div>
     <!-- Placed at the end of the document so the pages load faster -->

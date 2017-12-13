@@ -14,6 +14,7 @@ import com.lei.spider.impl.NovelDownload;
 import com.lei.spider.impl.chapter.DefaultChapterDetailSpider;
 import com.lei.spider.impl.chapter.DefaultChapterSpider;
 import com.lei.spider.impl.novel.KanShuZhongNovelSpider;
+import com.lei.spider.impl.novel.QuLaGetNovels;
 import com.lei.spider.interfaces.IChapterDetailSpider;
 import com.lei.spider.interfaces.IChapterSpider;
 import com.lei.spider.interfaces.INovelDownload;
@@ -49,8 +50,8 @@ public class TestSpider {
 		INovelDownload download = new NovelDownload();
 		
 		Configuration config = new Configuration();
-		config.setPath("D:/novel2");
-		String result = download.download("http://www.kanshuzhong.com/book/103251/", config);
+		config.setPath("D:/novel");
+		String result = download.download("http://www.kanshuzhong.com/book/109563/", config);
 		System.out.println("文件下载好了，保存在："+result+"里，快去查看吧！");
 	}
 	
@@ -81,6 +82,11 @@ public class TestSpider {
 				System.out.println(novel);
 			}
 		}
+	}
+	
+	@Test
+	public void testGet() {
+		QuLaGetNovels.getNovels("http://zhannei.baidu.com/cse/search?s=3677118700255927857&q=%E9%80%8D%E9%81%A5%E5%B0%8F%E4%B9%A6%E7%94%9F");
 	}
 
 }

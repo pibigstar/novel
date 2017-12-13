@@ -1,5 +1,7 @@
 package com.lei.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.lei.model.JSONModel;
 import com.lei.service.INovelService;
+import com.lei.spider.entity.Novel;
 
 @Controller
 public class NovelController {
@@ -17,11 +20,11 @@ public class NovelController {
 	
 	
 	/**
-	 * 小说搜索
+	 * 小说搜索{数据库}
 	 * @param keyWord
 	 * @return
 	 */
-	@RequestMapping(value = "/search.do" , method = RequestMethod.POST)
+	@RequestMapping(value = "/searchDB.do" , method = RequestMethod.POST)
 	@ResponseBody
 	public JSONModel getNovelByKeyWord(String keyWord) {
 		JSONModel j = new JSONModel();
@@ -29,6 +32,24 @@ public class NovelController {
 		j.setObject(novelService.getNovelsByKeyWord(keyWord));
 		return j;
 	}
+	
+	/**
+	 * 小说搜索
+	 * @param keyWord
+	 * @return
+	 */
+	@RequestMapping(value = "/search.do" , method = RequestMethod.POST)
+	@ResponseBody
+	public JSONModel getNovel(String keyWord,String plat) {
+		JSONModel j = new JSONModel();
+		j.setSuccess(true);
+		List<Novel> novels = novelService.getNovels(keyWord,plat);
+		
+		j.setObject(novels);
+		return j;
+	}
+	
+	
 	/**
 	 * 跳转到章节列表页
 	 * @param url
@@ -58,4 +79,5 @@ public class NovelController {
 		mv.getModel().put("baseUrl", baseUrl);
 		return mv;
 	}
+	
 }
