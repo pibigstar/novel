@@ -13,26 +13,20 @@
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
-    <style type="text/css">
-    #plat{
-    	position:fixed;
-    	top:50px;
-    	left:300px;
-    	width:100px;
-    	height:30px;
-    }
-    
-    </style>
   </head>
 <body>
+<div class="hidden">
+	<span class="input-group-addon">
+		<select id="plat">
+			<option value="1">笔下文学</option>
+			<option value="2">笔趣阁</option>
+		</select>
+	</span>
+</div>
 	<div class="jumbotron">
 		<div class="container">
 			<div class="row">
-				<select id="plat" class="row">
-					<option value="1">笔下文学</option>
-					<option value="2">笔趣阁</option>
-				</select>
-				<div class="col-lg-12">
+				<div class="col-md-10 col-md-offset-1">
 					<div class="input-group">
 						<input type="text" id="keyword" class="form-control"  placeholder="输入书名或者作者名">
 						<span class="input-group-btn">
